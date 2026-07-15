@@ -26,7 +26,7 @@ Màu sắc họ dùng là xanh navy đậm kết hợp xanh cyan — trông có 
 ### Proton VPN — protonvpn.com
 Tham khảo phần: **Bảng so sánh VPN**
 
-Thay thế vì dùng bảng HTML truyền thống (hàng ngang), ProtonVPN bố cục theo từng cột dọc — mỗi cột là một nhà cung cấp VPN. Cách này dễ đọc hơn nhiều vì mắt em chỉ cần nhìn dọc xuống một cột là thấy hết thông tin của cái đó.
+Thay vì dùng bảng HTML truyền thống (hàng ngang), ProtonVPN bố cục theo từng cột dọc — mỗi cột là một nhà cung cấp VPN. Cách này dễ đọc hơn nhiều vì mắt em chỉ cần nhìn dọc xuống một cột là thấy hết thông tin của cái đó.
 
 Cột ProtonVPN được làm nổi bật bằng viền màu và đổ bóng, trông như đang "nhô lên" so với các cột khác — cách này không cần phải ghi chú gì thêm mà người dùng vẫn hiểu ngay đây là lựa chọn được đề xuất.
 
