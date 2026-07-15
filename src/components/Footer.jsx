@@ -25,20 +25,26 @@ export default function Footer() {
           
           {/* Social Icons with Inline SVG to prevent library export version issues */}
           <div className="flex items-center gap-3 mt-2">
-            {/* Twitter / X */}
+            {/* Portfolio */}
             <a
-              href="#"
-              aria-label="Twitter"
+              href="https://nhs-portfolio.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Portfolio"
               className="w-9 h-9 rounded-full bg-[#FFFBF5]/5 hover:bg-[#C3ACD0] hover:text-[#2C1A4D] flex items-center justify-center transition-all"
             >
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+                <circle cx="12" cy="12" r="10" />
+                <path d="M2 12h20" />
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
               </svg>
             </a>
 
             {/* GitHub */}
             <a
-              href="#"
+              href="https://github.com/piin-nhs/"
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="GitHub"
               className="w-9 h-9 rounded-full bg-[#FFFBF5]/5 hover:bg-[#C3ACD0] hover:text-[#2C1A4D] flex items-center justify-center transition-all"
             >
@@ -50,7 +56,9 @@ export default function Footer() {
 
             {/* LinkedIn */}
             <a
-              href="#"
+              href="https://www.linkedin.com/in/piin-nhs/"
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="LinkedIn"
               className="w-9 h-9 rounded-full bg-[#FFFBF5]/5 hover:bg-[#C3ACD0] hover:text-[#2C1A4D] flex items-center justify-center transition-all"
             >
