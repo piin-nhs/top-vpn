@@ -1,5 +1,6 @@
 import React from 'react';
 import { Shield, Zap, Tv, EyeOff } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function FeaturesGrid() {
   const features = [
@@ -36,7 +37,13 @@ export default function FeaturesGrid() {
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <motion.div
+          className="text-center max-w-2xl mx-auto mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#674188]/10 text-[#674188] font-headings font-bold text-xs uppercase tracking-wider mb-4">
             Why Use A VPN?
           </div>
@@ -46,14 +53,18 @@ export default function FeaturesGrid() {
           <p className="text-[#7D6E90]">
             Bypass content walls, hide your IP location, and encrypt your browsing traffic with one click.
           </p>
-        </div>
+        </motion.div>
 
         {/* Features Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feat, idx) => (
-            <div 
+            <motion.div
               key={idx}
               className="p-8 rounded-3xl bg-white border border-lavender/30 shadow-[0_4px_20px_rgba(103,65,136,0.01)] transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden group/card cursor-default"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              viewport={{ once: true }}
             >
               <div className="w-14 h-14 rounded-xl flex items-center justify-center bg-cream mb-6 transition-colors duration-300 group-hover/card:bg-[#674188]/10">
                 <div className="transition-transform duration-500 group-hover/card:scale-110">
@@ -71,7 +82,7 @@ export default function FeaturesGrid() {
 
               {/* Bottom decorative bar that lights up on hover */}
               <div className="absolute bottom-0 left-8 right-8 h-[2px] bg-gradient-to-r from-transparent via-[#674188]/40 to-transparent transform scale-x-0 transition-transform duration-500 group-hover/card:scale-x-100" />
-            </div>
+            </motion.div>
           ))}
         </div>
 

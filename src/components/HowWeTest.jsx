@@ -20,7 +20,13 @@ export default function HowWeTest() {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 md:mb-20">
+        <motion.div
+          className="text-center max-w-2xl mx-auto mb-10 md:mb-20"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#674188]/10 text-[#674188] font-headings font-bold text-xs uppercase tracking-wider mb-4">
             Auditing Standard
           </div>
@@ -30,7 +36,8 @@ export default function HowWeTest() {
           <p className="text-[#7D6E90] text-sm md:text-base">
             We operate fully independent testing nodes to verify provider performance. Here is how we verify marketing claims.
           </p>
-        </div>
+        </motion.div>
+
 
         {/* Linear Connecting Steps (GoodLayers Style with Magic UI spring-loaded dots) */}
         <div className="relative mb-10 md:mb-16">

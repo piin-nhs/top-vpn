@@ -10,24 +10,14 @@ export default function Header() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+      if (currentScrollY > 20) setIsScrolled(true);
+      else setIsScrolled(false);
 
-      // 1. Determine scroll-based styling
-      if (currentScrollY > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-
-      // 2. Determine visibility (hide on scroll down, show on scroll up)
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsVisible(false); // scrolling down -> hide
-      } else {
-        setIsVisible(true);  // scrolling up -> show
-      }
+      if (currentScrollY > lastScrollY && currentScrollY > 100) setIsVisible(false);
+      else setIsVisible(true);
 
       setLastScrollY(currentScrollY);
     };
-
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
@@ -37,8 +27,8 @@ export default function Header() {
       <header className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 transform ${
         isVisible ? 'translate-y-0' : '-translate-y-full'
       } ${
-        isScrolled 
-          ? 'bg-warm/95 backdrop-blur-md py-4 shadow-sm' 
+        isScrolled
+          ? 'bg-warm/95 backdrop-blur-md py-4 shadow-sm'
           : 'bg-transparent py-6'
       }`}>
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
@@ -48,7 +38,7 @@ export default function Header() {
               VPN<span className="text-[#674188]">2026</span>
             </span>
           </a>
-          
+
           <nav className="hidden md:flex items-center gap-8 font-medium text-[#7D6E90] group/nav">
             <a href="#best-vpns" className="transition-all duration-300 hover:text-[#674188] group-hover/nav:opacity-50 hover:!opacity-100">Best VPNs</a>
             <a href="#how-we-test" className="transition-all duration-300 hover:text-[#674188] group-hover/nav:opacity-50 hover:!opacity-100">How We Test</a>
@@ -56,8 +46,8 @@ export default function Header() {
           </nav>
 
           <div className="hidden md:flex items-center">
-            <a 
-              href="#best-vpns" 
+            <a
+              href="#best-vpns"
               className="relative overflow-hidden bg-[#F97316] text-white px-5 py-2.5 rounded-xl font-headings font-semibold shadow-md transition-all duration-300 hover:shadow-lg transform hover:-translate-y-0.5 group/btn"
             >
               <span className="relative z-10 transition-colors duration-300 group-hover/btn:text-[#F97316]">
@@ -67,7 +57,7 @@ export default function Header() {
             </a>
           </div>
 
-          <button 
+          <button
             className="md:hidden text-[#2C1A4D] focus:outline-none"
             onClick={() => setIsOpen(true)}
             aria-label="Toggle Menu"
@@ -92,11 +82,7 @@ export default function Header() {
                 VPN<span className="text-[#674188]">2026</span>
               </span>
             </div>
-            <button 
-              className="text-[#2C1A4D]" 
-              onClick={() => setIsOpen(false)}
-              aria-label="Close Menu"
-            >
+            <button className="text-[#2C1A4D]" onClick={() => setIsOpen(false)} aria-label="Close Menu">
               <X className="w-6 h-6" />
             </button>
           </div>

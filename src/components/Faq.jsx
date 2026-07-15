@@ -17,14 +17,20 @@ export default function Faq() {
   return (
     <section id="faq" className="py-20 bg-warm scroll-mt-20">
       <div className="max-w-4xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
           <h2 className="font-headings text-3xl md:text-4xl text-[#2C1A4D] font-bold mb-4">
             Frequently Asked Questions
           </h2>
           <p className="text-[#7D6E90]">
             Got questions about choosing a VPN in 2026? Find quick answers below.
           </p>
-        </div>
+        </motion.div>
 
         <div className="flex flex-col gap-4">
           {faqsList.map((faq, idx) => {

@@ -122,6 +122,7 @@
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   h1,
@@ -134,7 +135,20 @@
     font-weight: 700;
     letter-spacing: -0.025em;
   }
+
+  /* Dark Mode Overrides */
+  .dark {
+    --color-warm: #130d1f;
+    --color-cream: #1c1430;
+    --color-lavender: #3d2d55;
+    --color-textDark: #e8dff5;
+    --color-textMuted: #a090bb;
+    --color-purple-light: #3d2d55;
+    --color-purple-DEFAULT: #9b6bc5;
+    --color-purple-dark: #e8dff5;
+  }
 }
+
 
 /* Sweep Light Effect Utility */
 .sweep-btn {

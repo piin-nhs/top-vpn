@@ -16,27 +16,15 @@ export default function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 400) {
-        setShowScrollTop(true);
-      } else {
-        setShowScrollTop(false);
-      }
+      setShowScrollTop(window.scrollY > 400);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleOpenModal = (vpnId) => {
-    setActiveModalId(vpnId);
-  };
-
-  const handleCloseModal = () => {
-    setActiveModalId(null);
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const handleOpenModal = (vpnId) => setActiveModalId(vpnId);
+  const handleCloseModal = () => setActiveModalId(null);
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
     <div className="min-h-screen bg-warm text-[#2C1A4D]">
@@ -50,7 +38,6 @@ export default function App() {
       </main>
       <Footer />
 
-      {/* Scroll to Top floating action button */}
       <AnimatePresence>
         {showScrollTop && (
           <motion.button
@@ -67,7 +54,6 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      {/* Framer Motion AnimatePresence for clean exit animation */}
       <AnimatePresence>
         {activeModalId && (
           <VpnDetailsModal vpnId={activeModalId} onClose={handleCloseModal} />

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Check, X, Star, Shield } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { vpnData } from '../data/vpnData';
 
 export default function VpnTable({ onOpenModal }) {
@@ -91,7 +92,13 @@ export default function VpnTable({ onOpenModal }) {
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <motion.div
+          className="text-center max-w-2xl mx-auto mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#674188]/10 text-[#674188] font-headings font-bold text-xs uppercase tracking-wider mb-4">
             Comparison Table
           </div>
@@ -101,7 +108,7 @@ export default function VpnTable({ onOpenModal }) {
           <p className="text-[#7D6E90] text-sm">
             Detailed check of jurisdiction legality, source audits, and infrastructure accelerators.
           </p>
-        </div>
+        </motion.div>
 
         {/* ProtonVPN Style Column-based Grid */}
         <div className="w-full overflow-x-auto pb-6 scrollbar-thin">
@@ -110,12 +117,16 @@ export default function VpnTable({ onOpenModal }) {
             {/* ========================================================================= */}
             {/* ANIMATA BORDER TRAIL CARD OVERLAY FOR PROTON VPN (Spans Column 2, Rows 1-end) */}
             {/* ========================================================================= */}
-            <div
+            <motion.div
               className="absolute inset-0 pointer-events-none rounded-none z-10 shadow-md border-2 border-[#674188] bg-white"
               style={{
                 gridColumn: '2 / 3',
                 gridRow: '1 / 13',
               }}
+              initial={{ opacity: 0, scaleY: 0.95 }}
+              whileInView={{ opacity: 1, scaleY: 1 }}
+              transition={{ duration: 0.5, delay: 0 * 0.08, ease: "easeOut" }}
+              viewport={{ once: true }}
             />
 
             {/* Headers Row */}
@@ -125,21 +136,25 @@ export default function VpnTable({ onOpenModal }) {
               </span>
             </div>
 
-            {orderedVpnData.map((vpn) => {
+            {orderedVpnData.map((vpn, idx) => {
               const isHighlighted = vpn.id === 'protonvpn';
               const isHovered = hoveredColumn === vpn.id;
 
               return (
-                <div
+                <motion.div
                   key={vpn.id}
                   onMouseEnter={() => setHoveredColumn(vpn.id)}
                   onMouseLeave={() => setHoveredColumn(null)}
                   className={`flex flex-col items-center justify-between pb-6 pt-6 px-4 text-center transition-all duration-300 ${isHighlighted
-                    ? 'bg-transparent border-0 z-20' // Transparent and no border to let absolute card handle it!
+                    ? 'bg-transparent border-0 z-20'
                     : isHovered
                       ? 'bg-cream/20 border-t border-x border-[#674188]/60 z-5'
                       : 'bg-transparent border-t border-x border-lavender/20'
                     }`}
+                  initial={{ opacity: 0, scale: 0.95, y: 5 }}
+                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: idx * 0.08, ease: "easeOut" }}
+                  viewport={{ once: true }}
                 >
                   <span className="font-headings text-sm font-extrabold text-[#2C1A4D] block mb-3">
                     {vpn.name}
@@ -151,9 +166,10 @@ export default function VpnTable({ onOpenModal }) {
                   >
                     <Shield className="w-full h-full" style={{ color: vpn.logoColor }} />
                   </div>
-                </div>
+                </motion.div>
               );
             })}
+
 
             {/* Feature Values Rows */}
             {featuresList.map((feature, featureIdx) => (
@@ -166,24 +182,28 @@ export default function VpnTable({ onOpenModal }) {
                 </div>
 
                 {/* Values for each VPN */}
-                {orderedVpnData.map((vpn) => {
+                {orderedVpnData.map((vpn, idx) => {
                   const isHighlighted = vpn.id === 'protonvpn';
                   const isHovered = hoveredColumn === vpn.id;
 
                   return (
-                    <div
+                    <motion.div
                       key={vpn.id}
                       onMouseEnter={() => setHoveredColumn(vpn.id)}
                       onMouseLeave={() => setHoveredColumn(null)}
                       className={`flex items-center justify-center py-4 px-4 text-xs text-[#7D6E90] transition-all duration-300 ${isHighlighted
-                        ? 'bg-transparent border-0 font-semibold z-20' // Transparent, no borders, no grid lines crossing!
+                        ? 'bg-transparent border-0 font-semibold z-20'
                         : isHovered
                           ? 'bg-cream/20 border-x border-x-[#674188]/60 border-b border-lavender/10'
                           : 'bg-transparent border-x border-x-lavender/20 border-b border-lavender/10'
                         }`}
+                      initial={{ opacity: 0, scale: 0.98, y: 5 }}
+                      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: idx * 0.08, ease: "easeOut" }}
+                      viewport={{ once: true }}
                     >
                       {getFeatureValue(vpn, feature.key)}
-                    </div>
+                    </motion.div>
                   );
                 })}
               </React.Fragment>
@@ -196,21 +216,25 @@ export default function VpnTable({ onOpenModal }) {
               </span>
             </div>
 
-            {orderedVpnData.map((vpn) => {
+            {orderedVpnData.map((vpn, idx) => {
               const isHighlighted = vpn.id === 'protonvpn';
               const isHovered = hoveredColumn === vpn.id;
 
               return (
-                <div
+                <motion.div
                   key={vpn.id}
                   onMouseEnter={() => setHoveredColumn(vpn.id)}
                   onMouseLeave={() => setHoveredColumn(null)}
                   className={`flex flex-col items-center justify-center pt-6 pb-6 px-4 transition-all duration-300 ${isHighlighted
-                    ? 'bg-transparent border-0 z-20' // Transparent, card handles borders
+                    ? 'bg-transparent border-0 z-20'
                     : isHovered
                       ? 'bg-cream/20 border-b border-x border-[#674188]/60 z-5'
                       : 'bg-transparent border-b border-x border-lavender/20'
                     }`}
+                  initial={{ opacity: 0, scale: 0.95, y: 5 }}
+                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: idx * 0.08, ease: "easeOut" }}
+                  viewport={{ once: true }}
                 >
                   {isHighlighted ? (
                     <a
@@ -244,7 +268,7 @@ export default function VpnTable({ onOpenModal }) {
                   >
                     Specs Details
                   </button>
-                </div>
+                </motion.div>
               );
             })}
 

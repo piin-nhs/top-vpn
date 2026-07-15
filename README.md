@@ -170,15 +170,12 @@ Dữ liệu VPN và các bước quy trình đều để trong `src/data/vpnData
 
 ---
 
-### Phần khó làm nhất
+### Scroll animation khi cuộn
 
-**Viền phát sáng chạy vòng (AnimatedBorderTrail):** Cần làm sao cho đường phát sáng chạy đúng theo góc bo của khung. Giải pháp là dùng `offsetPath` với hình dạng `rect()` trong CSS, truyền giá trị góc bo vào động.
-
-**Animation hạt Boids:** Chạy 200 hạt mà vẫn mượt 60fps trên canvas. Phải tối ưu cách tính toán hàng xóm của từng hạt thay vì kiểm tra toàn bộ danh sách.
-
-**Thứ tự lớp z-index:** Thẻ highlight ProtonVPN phải nằm trên các ô thông thường nhưng dưới popup — phải sắp xếp đúng thứ tự: bảng `z-10`, thanh nav `z-40`, popup `z-50`.
+Mỗi section sử dụng `whileInView` của Framer Motion — khi người dùng cuộn đến, tiêu đề và các card lần lượt trượt lên và hiện ra. Các card xuất hiện theo thứ tự với độ trễ tăng dần (stagger delay 100ms mỗi card) để trông tự nhiên hơn so với việc tất cả xuất hiện cùng lúc. Animation chỉ chạy một lần (`once: true`) để không bị lặp lại mỗi lần cuộn lên xuống.
 
 ---
+
 
 ## 5. Giải thích quyết định thiết kế
 
@@ -200,9 +197,7 @@ Outfit có nét chữ hiện đại, gọn gàng — không quá cứng nhắc n
 
 1. Thêm phần đánh giá từ người dùng thực — giúp tăng độ tin cậy
 2. Cho phép lọc bảng theo nhu cầu (xem phim, chơi game, bảo mật) — bảng thay đổi nội dung theo
-3. Thêm chế độ tối (dark mode) — cơ sở CSS đã sẵn sàng, chỉ cần thêm biến màu tương ứng
-4. Animation khi cuộn đến từng phần — hiện tại các phần xuất hiện tĩnh, có thể làm mượt hơn
-5. Tối ưu hiệu suất: tải popup khi cần, ảnh dạng WebP, tách code theo route
+3. Tối ưu hiệu suất: tải popup khi cần, ảnh dạng WebP, tách code theo route
 
 ---
 
