@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-warm: #FFFFFF;
+  --color-cream: #F8F9FA;
+  --color-lavender: #C3ACD0;
+
+  --color-purple-light: #C3ACD0;
+  --color-purple-DEFAULT: #674188;
+  --color-purple-dark: #2C1A4D;
+
+  --color-textDark: #2C1A4D;
+  --color-textMuted: #7D6E90;
+
+  --font-headings: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  --shadow-glow: 0 0 15px rgba(103, 65, 136, 0.1);
+  --shadow-glow-lg: 0 0 25px rgba(103, 65, 136, 0.25);
+
+  /* Custom Animations in Tailwind v4 */
+  --animate-float-slow: float-slow 5s ease-in-out infinite;
+  --animate-float-delayed: float-delayed 5s ease-in-out infinite;
+  --animate-fade-in-up: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-sweep: sweep 2s ease-in-out infinite;
+  --animate-pulse-ring: pulse-ring 3s cubic-bezier(0.215, 0.610, 0.355, 1) infinite;
+  --animate-rotate-gradient: rotate-gradient 6s linear infinite;
+
+  @keyframes rotate-gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes float-slow {
+
+    0%,
+    100% {
+      transform: translateY(0px) rotate(6deg);
+    }
+
+    50% {
+      transform: translateY(-10px) rotate(6deg);
+    }
+  }
+
+  @keyframes float-delayed {
+
+    0%,
+    100% {
+      transform: translateY(0px) rotate(-6deg);
+    }
+
+    50% {
+      transform: translateY(-10px) rotate(-6deg);
+    }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes sweep {
+    0% {
+      transform: translateX(-100%);
+    }
+
+    50%,
+    100% {
+      transform: translateX(250%);
+    }
+  }
+
+  @keyframes pulse-ring {
+    0% {
+      transform: scale(0.95);
+      opacity: 0.8;
+    }
+
+    50% {
+      transform: scale(1.05);
+      opacity: 0.4;
+    }
+
+    100% {
+      transform: scale(0.95);
+      opacity: 0.8;
+    }
+  }
+}
+
+@layer base {
+  #root {
+    zoom: 90%;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-warm);
+    color: var(--color-textDark);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-headings);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+}
+
+/* Sweep Light Effect Utility */
+.sweep-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.sweep-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: skewX(-25deg);
+  pointer-events: none;
+  animation: var(--animate-sweep);
+}
+
+/* Magic UI Border Beam Card Class */
+.border-beam-card {
+  background-color: #FFFFFF;
+  border: 2px solid transparent;
+  background-image: linear-gradient(#FFFFFF, #FFFFFF), linear-gradient(90deg, #674188, #F97316, #C3ACD0, #674188);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  animation: rotate-gradient 4s linear infinite;
+  background-size: 200% auto;
+}
+
+/* Animata Border Trail Element and Animation */
+.border-trail-element {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(to right, #674188, #F97316, #C3ACD0);
+  filter: blur(20px);
+  offset-path: rect(0 100% 100% 0 round 24px);
+  animation: trail-move 5s linear infinite;
+}
+
+@keyframes trail-move {
+  0% {
+    offset-distance: 0%;
+  }
+
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFFFFF;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C3ACD0;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #674188;
+}
