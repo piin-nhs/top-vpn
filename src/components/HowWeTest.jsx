@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { methodologySteps } from '../data/vpnData';
-import AnimatedBorderTrail from './AnimatedBorderTrail';
 
 export default function HowWeTest() {
   const [activeStepId, setActiveStepId] = useState('speed');
@@ -96,13 +95,9 @@ export default function HowWeTest() {
           </div>
         </div>
 
-        {/* Methodology Expanded Detail Pane with dynamic glow border */}
-        <AnimatedBorderTrail 
-          containerClassName="max-w-5xl mx-auto shadow-md border border-[#674188]/30"
-          trailSize={100}
-          borderRadius={16}
-        >
-          <div className="bg-white p-5 sm:p-6 md:p-8 relative z-10">
+        {/* Methodology Expanded Detail Pane */}
+        <div className="max-w-5xl mx-auto shadow-md border border-[#674188]/30 rounded-2xl overflow-hidden bg-white">
+          <div className="p-5 sm:p-6 md:p-8">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeStepData.id}
@@ -131,7 +126,7 @@ export default function HowWeTest() {
               </motion.div>
             </AnimatePresence>
           </div>
-        </AnimatedBorderTrail>
+        </div>
 
       </div>
     </section>
